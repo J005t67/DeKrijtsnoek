@@ -62,10 +62,13 @@
                 ctx.closePath();
             }
 
-            function CurrentXy(e)
-            {
-                currX = e.clientX - canvas.getBoundingClientRect().left;
-                currY = e.clientY - canvas.getBoundingClientRect().top;
+            function getMousePos(canvas, evt) {
+                var rect = canvas.getBoundingClientRect(), // abs. size of element
+                    scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for x
+                    scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for y
+
+                currX = (evt.clientX - rect.left) * scaleX;
+                currY = (evt.clientY - rect.top) * scaleY;
             }
 
             function mouseMoveHandler(e)
@@ -76,7 +79,7 @@
                 {
                     prevX = currX;
                     prevY = currY;
-                    CurrentXy(e);
+                    getMousePos(canvas, e)
                     draw();
                 }
             }
@@ -88,7 +91,7 @@
 
             function mouseDownHandler(e)
             {
-                CurrentXy(e);
+                getMousePos(canvas, e)
                 mustDraw = true;
             }
 
