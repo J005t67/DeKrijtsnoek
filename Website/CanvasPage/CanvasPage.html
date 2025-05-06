@@ -26,8 +26,8 @@
         <script>
             var canvas;
             var ctx;
-            var color = "red";
-            var mustDraw = true;
+            var color = "#EBA09E";
+            var mustDraw = false;
             var lineWidth = 4;
             var prevX;
             var prevY;
@@ -47,6 +47,9 @@
             function RedSelected() { color = "#EBA09E"; }
             function BlueSelected() { color = "#81C1DC"; }
             function YellowSelected() { color = "#DDD1A0"; }
+            function GreenSelected() { color = "#A6D3BC"; }
+            function OrangeSelected() { color = "#E8BB9B"; }
+            function PurpleSelected() { color = "#D5B4C7"; }
 
             function draw()
             {
@@ -59,6 +62,12 @@
                 ctx.closePath();
             }
 
+            function CurrentXy(e)
+            {
+                currX = e.clientX - canvas.getBoundingClientRect().left;
+                currY = e.clientY - canvas.getBoundingClientRect().top;
+            }
+
             function mouseMoveHandler(e)
             {
                 prevX = currX;
@@ -67,8 +76,7 @@
                 {
                     prevX = currX;
                     prevY = currY;
-                    currX = e.clientX - canvas.getBoundingClientRect().left;
-                    currY = e.clientY - canvas.getBoundingClientRect().top;
+                    CurrentXy(e);
                     draw();
                 }
             }
@@ -80,8 +88,7 @@
 
             function mouseDownHandler(e)
             {
-                currX = e.clientX - canvas.getBoundingClientRect().left;
-                currY = e.clientY - canvas.getBoundingClientRect().top;
+                CurrentXy(e);
                 mustDraw = true;
             }
 
@@ -95,14 +102,23 @@
     </head>
     <body onLoad="onloadBody()">
         <div>
-            <button id="redButton" class="colorButton" onclick="RedSelected()">
-                <img id="redImage" class="colorButtonImage" src="../Images/KrijtjeRood.png" />
+            <button class="colorButton" onclick="RedSelected()">
+                <img class="colorButtonImage" src="../Images/KrijtjeRood.png" />
             </button>
-            <button id="blueButton" class="colorButton" onclick="BlueSelected()">
+            <button class="colorButton" onclick="BlueSelected()">
                 <img class="colorButtonImage" src="../Images/KrijtjeBlauw.png" />
             </button>
-            <button id="yellowButton" class="colorButton" onclick="YellowSelected()">
+            <button class="colorButton" onclick="YellowSelected()">
                 <img class="colorButtonImage" src="../Images/KrijtjeGeel.png" />
+            </button>
+            <button class="colorButton" onclick="GreenSelected()">
+                <img class="colorButtonImage" src="../Images/Green.png" />
+            </button>
+            <button class="colorButton" onclick="OrangeSelected()">
+                <img class="colorButtonImage" src="../Images/Orange.png" />
+            </button>
+            <button class="colorButton" onclick="PurpleSelected()">
+                <img class="colorButtonImage" src="../Images/Purple.png" />
             </button>
         </div>
         <canvas id="canvasId">
