@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="../normalize.css">
+        <link rel="stylesheet" href="../styles.css">
+        <style>
+            body {
+              background-color: coral;
+            }
+            #canvasId {
+                background-color: #3A3A3A;
+                width: 400px;
+                height: 400px;
+            }
+            .colorButton {
+                border-width: 0;
+                background-color: transparent;
+            }
+            .colorButtonImage {
+                rotate: 230deg;
+                width: 20px;
+            }
+        </style>
+        <script>
+            var canvas;
+            var ctx;
+            var color = "red";
+            var mustDraw = true;
+            var lineWidth = 4;
+            var prevX;
+            var prevY;
+            var currX;
+            var currY;
+
+            function onloadBody() {
+                canvas = document.getElementById('canvasId');
+                ctx = canvas.getContext("2d");
+
+                canvas.addEventListener("mousemove", mouseMoveHandler, false);
+                canvas.addEventListener("mousedown", mouseDownHandler, false);
+                canvas.addEventListener("mouseup", mouseUpHandler, false);
+                canvas.addEventListener("mouseout", mouseOutHandler, false);
+            }
+
+            function RedSelected() { color = "#EBA09E"; }
+            function BlueSelected() { color = "#81C1DC"; }
+            function YellowSelected() { color = "#DDD1A0"; }
+
+            function draw()
+            {
+                ctx.beginPath();
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(currX, currY);
+                ctx.strokeStyle = color;
+                ctx.lineWidth = lineWidth;
+                ctx.stroke();
+                ctx.closePath();
+            }
+
+            function mouseMoveHandler(e)
+            {
+                prevX = currX;
+                prevY = currY;
+                if (mustDraw)
+                {
+                    prevX = currX;
+                    prevY = currY;
+                    currX = e.clientX - canvas.getBoundingClientRect().left;
+                    currY = e.clientY - canvas.getBoundingClientRect().top;
+                    draw();
+                }
+            }
+
+            function mouseOutHandler()
+            {
+                mustDraw = false;
+            }
+
+            function mouseDownHandler(e)
+            {
+                currX = e.clientX - canvas.getBoundingClientRect().left;
+                currY = e.clientY - canvas.getBoundingClientRect().top;
+                mustDraw = true;
+            }
+
+            function mouseUpHandler()
+            {
+                mustDraw = false;
+            }
+
+        </script>
+       <title>CanvasPage</title>
+    </head>
+    <body onLoad="onloadBody()">
+        <div>
+            <button id="redButton" class="colorButton" onclick="RedSelected()">
+                <img id="redImage" class="colorButtonImage" src="../Images/KrijtjeRood.png" />
+            </button>
+            <button id="blueButton" class="colorButton" onclick="BlueSelected()">
+                <img class="colorButtonImage" src="../Images/KrijtjeBlauw.png" />
+            </button>
+            <button id="yellowButton" class="colorButton" onclick="YellowSelected()">
+                <img class="colorButtonImage" src="../Images/KrijtjeGeel.png" />
+            </button>
+        </div>
+        <canvas id="canvasId">
+        </canvas>
+
+    </body>
+</html>

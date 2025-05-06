@@ -9,43 +9,8 @@
             body {
               background-color: coral;
             }
-            #krijtjesCanvas {
-                background-color: aqua;
-                width: 400px;
-                height: 400px;
-                rotate: 30;
-
-            }
         </style>
         <script>
-            function onloadBody() {
-                const krijtjesCanvas = document.getElementById('krijtjesCanvas');
-                const ctx = krijtjesCanvas.getContext("2d");
-                ctx.rotate(20 * Math.PI / 180);
-                ctx.fillRect(50, 20, 100, 50);
-                alert("onloadBody end");
-            }
-            function addPencilOnCanvas()
-            {
-                alert("addPencilOnCanvas");
-                const krijtjesCanvas = document.getElementById('krijtjesCanvas');
-                const ctx = krijtjesCanvas.getContext("2d");
-                ctx.rotate(30 * Math.PI / 180);
-                const ima = document.getElementById("snoekje");
-                ctx.drawImage(ima, 0, 0, 50, 50);
-                alert("addPencilOnCanvas end");
-           }
-            function addPencil()
-            {
-                alert("Add pencil");
-                const krijtjesCanvas = document.getElementById('krijtjesCanvas');
-                const newKrijtje = document.createElement('img');
-                newKrijtje.src = "Krijtsnoek.Liempde.JPG";
-                newKrijtje.style.width = "50px";
-                newKrijtje.style.position = "relative";
-                newKrijtje.style.left = "300px";
-                krijtjesCanvas.appendChild(newKrijtje);
-            }
         </script>
        <title>De krijtsnoek</title>
     </head>
@@ -55,12 +20,10 @@
         <p><a href="FontPage\FontPage.html">FontPage</a></p>
         <h1>Krijtjes</h1>
         <p><a href="KrijtjesPage\KrijtjesPage.html">KrijtjesPage</a></p>
+        <h1>Canvas</h1>
+        <p><a href="CanvasPage\CanvasPage.html">CanvasPage</a></p>
 
         <img id="snoekje" src="Krijtsnoek.Liempde.JPG" alt="Krijtsnoek Liempde" height="600" width="600" />
-        <canvas id="krijtjesCanvas">
-            <img src="Krijtsnoek.Liempde.JPG" alt="Krijtsnoek Liempde" height="60" width="60" />
-        </canvas>
-        <button onClick="addPencilOnCanvas()">Add pencil on canvas</button>
 
     </body>
 </html>
