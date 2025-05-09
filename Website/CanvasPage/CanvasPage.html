@@ -14,6 +14,11 @@
                 width: 400px;
                 height: 400px;
             }
+            #dsCanvasId {
+                background-color: #3A3A3A;
+                width: 1077px;
+                height: 333px;
+            }
             .colorButton {
                 border-width: 0;
                 background-color: transparent;
@@ -34,6 +39,10 @@
             var currX;
             var currY;
 
+            var dsCanvas;
+            var dsContext;
+            var dsImage;
+
             function onloadBody() {
                 canvas = document.getElementById('canvasId');
                 ctx = canvas.getContext("2d");
@@ -42,6 +51,12 @@
                 canvas.addEventListener("mousedown", mouseDownHandler, false);
                 canvas.addEventListener("mouseup", mouseUpHandler, false);
                 canvas.addEventListener("mouseout", mouseOutHandler, false);
+
+                dsCanvas = document.getElementById('dsCanvasId');
+                dsContext = dsCanvas.getContext("2d");
+                dsImage = new Image();
+                dsImage.src = "../Images/CitroenDs.png"
+                dsImage.onload = () => { dsContext.drawImage(dsImage, 0, 0, 320, 100); };
             }
 
             function RedSelected() { color = "#EBA09EA0"; }
@@ -129,6 +144,9 @@
             </button>
         </div>
         <canvas id="canvasId">
+        </canvas>
+        <canvas id="dsCanvasId">
+
         </canvas>
 
     </body>
