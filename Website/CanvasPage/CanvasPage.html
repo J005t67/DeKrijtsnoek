@@ -59,12 +59,12 @@
                 dsImage.onload = () => { dsContext.drawImage(dsImage, 0, 0, 320, 100); };
             }
 
-            function RedSelected() { color = "#EBA09EA0"; }
-            function BlueSelected() { color = "#81C1DCA0"; }
-            function YellowSelected() { color = "#DDD1A0A0"; }
-            function GreenSelected() { color = "#A6D3BCA0"; }
-            function OrangeSelected() { color = "#E8BB9BA0"; }
-            function PurpleSelected() { color = "#D5B4C7A0"; }
+            function RedPenSelected() { color = "#EBA09EA0"; }
+            function BluePenSelected() { color = "#81C1DCA0"; }
+            function YellowPenSelected() { color = "#DDD1A0A0"; }
+            function GreenPenSelected() { color = "#A6D3BCA0"; }
+            function OrangePenSelected() { color = "#E8BB9BA0"; }
+            function PurplePenSelected() { color = "#D5B4C7A0"; }
             function SpongeSelected() { color = "#3A3A3AA0"; }
 
             function draw()
@@ -121,23 +121,23 @@
     </head>
     <body onLoad="onloadBody()">
         <div>
-            <button class="colorButton" onclick="RedSelected()">
-                <img class="colorButtonImage" src="../Images/KrijtjeRood.png" />
+            <button class="colorButton" onclick="RedPenSelected()">
+                <img class="colorButtonImage" src="../Images/RedPen.png" />
             </button>
-            <button class="colorButton" onclick="BlueSelected()">
-                <img class="colorButtonImage" src="../Images/KrijtjeBlauw.png" />
+            <button class="colorButton" onclick="BluePenSelected()">
+                <img class="colorButtonImage" src="../Images/BluePen.png" />
             </button>
-            <button class="colorButton" onclick="YellowSelected()">
-                <img class="colorButtonImage" src="../Images/KrijtjeGeel.png" />
+            <button class="colorButton" onclick="YellowPenSelected()">
+                <img class="colorButtonImage" src="../Images/YellowPen.png" />
             </button>
-            <button class="colorButton" onclick="GreenSelected()">
-                <img class="colorButtonImage" src="../Images/Green.png" />
+            <button class="colorButton" onclick="GreenPenSelected()">
+                <img class="colorButtonImage" src="../Images/GreenPen.png" />
             </button>
-            <button class="colorButton" onclick="OrangeSelected()">
-                <img class="colorButtonImage" src="../Images/Orange.png" />
+            <button class="colorButton" onclick="OrangePenSelected()">
+                <img class="colorButtonImage" src="../Images/OrangePen.png" />
             </button>
-            <button class="colorButton" onclick="PurpleSelected()">
-                <img class="colorButtonImage" src="../Images/Purple.png" />
+            <button class="colorButton" onclick="PurplePenSelected()">
+                <img class="colorButtonImage" src="../Images/PurplePen.png" />
             </button>
             <button class="colorButton" onclick="SpongeSelected()" width="200">
                 <img class="colorButtonImage" src="../Images/Sponge.png" width="150"/>
