@@ -33,6 +33,7 @@
                 rotate: 230deg;
                 width: 20px;
                 background-color: coral;
+                draggable: false;
             }
 
         </style>
@@ -43,12 +44,14 @@
                     this.imageUrl = anImageUrl;
                 }
             }
+
             const redCursorDef = new ImageCursorDef("../Images/RedPen.png");
             const blueCursorDef = new ImageCursorDef("../Images/BluePen.png");
             const yellowCursorDef = new ImageCursorDef("../Images/YellowPen.png");
             const greenCursorDef = new ImageCursorDef("../Images/GreenPen.png");
             const orangeCursorDef = new ImageCursorDef("../Images/OrangePen.png");
             const purpleCursorDef = new ImageCursorDef("../Images/PurplePen.png");
+            const spongeCursorDef = new ImageCursorDef("../Images/Sponge.png");
 
             let redCursor;
             let blueCursor;
@@ -56,6 +59,7 @@
             let greenCursor;
             let orangeCursor;
             let purpleCursor;
+            let spongeCursor;
 
             let cursorX;
             let cursorY;
@@ -84,6 +88,7 @@
                 greenCursor = document.getElementById('greenCursor');
                 orangeCursor = document.getElementById('orangeCursor');
                 purpleCursor = document.getElementById('purpleCursor');
+                spongeCursor = document.getElementById('spongeCursor');
 
                 canvas.addEventListener("mousemove", mouseMoveHandler, false);
                 canvas.addEventListener("mousedown", mouseDownHandler, false);
@@ -106,6 +111,7 @@
                 greenCursor.style.visibility = "hidden"
                 orangeCursor.style.visibility = "hidden";
                 purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function BluePenSelected()
@@ -117,6 +123,7 @@
                 greenCursor.style.visibility = "hidden"
                 orangeCursor.style.visibility = "hidden";
                 purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function YellowPenSelected()
@@ -128,6 +135,7 @@
                 greenCursor.style.visibility = "hidden"
                 orangeCursor.style.visibility = "hidden";
                 purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function GreenPenSelected()
@@ -139,6 +147,7 @@
                 greenCursor.style.visibility = "visible"
                 orangeCursor.style.visibility = "hidden";
                 purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function OrangePenSelected()
@@ -150,6 +159,7 @@
                 greenCursor.style.visibility = "hidden"
                 orangeCursor.style.visibility = "visible";
                 purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function PurplePenSelected()
@@ -161,11 +171,19 @@
                 greenCursor.style.visibility = "hidden"
                 orangeCursor.style.visibility = "hidden";
                 purpleCursor.style.visibility = "visible"
+                spongeCursor.style.visibility = "hidden"
             }
 
             function SpongeSelected()
             {
                 color = "#3A3A3AA0";
+                redCursor.style.visibility = "hidden";
+                blueCursor.style.visibility = "hidden";
+                yellowCursor.style.visibility = "hidden"
+                greenCursor.style.visibility = "hidden"
+                orangeCursor.style.visibility = "hidden";
+                purpleCursor.style.visibility = "hidden"
+                spongeCursor.style.visibility = "visible"
             }
 
             function draw()
@@ -219,6 +237,8 @@
                     orangeCursor.style.top = cursorY + 'px';
                     purpleCursor.style.left = cursorX + 'px';
                     purpleCursor.style.top = cursorY + 'px';
+                    spongeCursor.style.left = cursorX + 30 +'px';
+                    spongeCursor.style.top = cursorY + 30 + 'px';
                  }
             }
 
@@ -267,12 +287,13 @@
         </div>
         <canvas id="canvasId" position="relative">
         </canvas>
-        <img id="redCursor" class="cursorImageStyle" style.position="absolute" style.top="100" style.left="100" src="../Images/RedPen.png" />
-        <img id="blueCursor" class="cursorImageStyle" style.position="absolute" top="100" left="150" src="../Images/BluePen.png" />
-        <img id="yellowCursor" class="cursorImageStyle" style.position="absolute" top="100" left="200" src="../Images/YellowPen.png" />
-        <img id="greenCursor" class="cursorImageStyle" style.position="absolute" style.top="100" style.left="100" src="../Images/GreenPen.png" />
-        <img id="orangeCursor" class="cursorImageStyle" style.position="absolute" top="100" left="150" src="../Images/OrangePen.png" />
-        <img id="purpleCursor" class="cursorImageStyle" style.position="absolute" top="100" left="200" src="../Images/PurplePen.png" />
+        <img id="redCursor" class="cursorImageStyle" draggable="false" style.position="absolute" style.top="100" style.left="100" src="../Images/RedPen.png" />
+        <img id="blueCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="150" src="../Images/BluePen.png" />
+        <img id="yellowCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/YellowPen.png" />
+        <img id="greenCursor" class="cursorImageStyle" draggable="false" style.position="absolute" style.top="100" style.left="100" src="../Images/GreenPen.png" />
+        <img id="orangeCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="150" src="../Images/OrangePen.png" />
+        <img id="purpleCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/PurplePen.png" />
+        <img id="spongeCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/Sponge.png" />
         <canvas id="dsCanvasId">
         </canvas>
 
