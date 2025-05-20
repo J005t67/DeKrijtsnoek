@@ -39,18 +39,24 @@
         <script>
             "use strict"
             class ImageCursorDef {
-                constructor(anImageUrl) {
+                constructor(
+                    anImageUrl,
+                    aHotSpotX,
+                    aHotSpotY) {
                     this.imageUrl = anImageUrl;
+                    this.hotSpotX = aHotSpotX;
+                    this.hotSpotY = aHotSpotY;
                 }
             }
 
-            const redCursorDef = new ImageCursorDef("../Images/RedPenCursor.png");
-            const blueCursorDef = new ImageCursorDef("../Images/BluePenCursor.png");
-            const yellowCursorDef = new ImageCursorDef("../Images/YellowPenCursor.png");
-            const greenCursorDef = new ImageCursorDef("../Images/GreenPenCursor.png");
-            const orangeCursorDef = new ImageCursorDef("../Images/OrangePenCursor.png");
-            const purpleCursorDef = new ImageCursorDef("../Images/PurplePenCursor.png");
-            const spongeCursorDef = new ImageCursorDef("../Images/SpongeCursor.png");
+            const redCursorDef = new ImageCursorDef("../Images/RedPenCursor.png", 0, 30);
+            const blueCursorDef = new ImageCursorDef("../Images/BluePenCursor.png", 0, 30);
+            const yellowCursorDef = new ImageCursorDef("../Images/YellowPenCursor.png", 0, 30);
+            const greenCursorDef = new ImageCursorDef("../Images/GreenPenCursor.png", 0, 30);
+            const orangeCursorDef = new ImageCursorDef("../Images/OrangePenCursor.png", 0, 30);
+            const purpleCursorDef = new ImageCursorDef("../Images/PurplePenCursor.png", 0, 30);
+            const spongeCursorDef = new ImageCursorDef("../Images/SpongeCursor.png", 10, 20);
+            let currentCursorDef = redCursorDef;
 
             let imageCursor;
 
@@ -92,43 +98,50 @@
             function RedPenSelected()
             {
                 color = "#EBA09EA0";
-                imageCursor.src = redCursorDef.imageUrl;
+                currentCursorDef = redCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function BluePenSelected()
             {
                 color = "#81C1DCA0";
-                imageCursor.src = blueCursorDef.imageUrl;
+                currentCursorDef = blueCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function YellowPenSelected()
             {
                 color = "#DDD1A0A0";
-                imageCursor.src = yellowCursorDef.imageUrl;
+                currentCursorDef = yellowCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function GreenPenSelected()
             {
                 color = "#A6D3BCA0";
-                imageCursor.src = greenCursorDef.imageUrl;
+                currentCursorDef = greenCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function OrangePenSelected()
             {
                 color = "#E8BB9BA0";
-                imageCursor.src = orangeCursorDef.imageUrl;
+                currentCursorDef = orangeCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function PurplePenSelected()
             {
                 color = "#D5B4C7A0";
-                imageCursor.src = purpleCursorDef.imageUrl;
+                currentCursorDef = purpleCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function SpongeSelected()
             {
                 color = "#3A3A3AA0";
-                imageCursor.src = spongeCursorDef.imageUrl;
+                currentCursorDef = spongeCursorDef;
+                imageCursor.src = currentCursorDef.imageUrl;
             }
 
             function draw()
@@ -170,8 +183,8 @@
                     prevY = currY;
                     getMousePos(canvas, e)
                     draw();
-                    imageCursor.style.left = cursorX + 50 + 'px';
-                    imageCursor.style.top = cursorY + 50 + 'px';
+                    imageCursor.style.left = cursorX - currentCursorDef.hotSpotX + 'px';
+                    imageCursor.style.top = cursorY - currentCursorDef.hotSpotY + 'px';
                  }
             }
 
