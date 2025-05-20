@@ -7,6 +7,26 @@
             body {
               background-color: coral;
             }
+
+            /* HIDE RADIO */
+            [type=radio] {
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            /* IMAGE STYLES */
+            [type=radio] + img {
+                cursor: pointer;
+                height: 100px;
+            }
+
+            /* CHECKED STYLES */
+            [type=radio]:checked + img {
+                height: 200px;
+            }
+
             #canvasId {
                 background-color: #3A3A3A;
                 width: 100%;
@@ -16,6 +36,7 @@
             .toolButtonStyle {
                 border-width: 0;
                 background-color: transparent;
+                cursor: pointer;
             }
 
             .toolButtonImageStyle {
@@ -196,27 +217,34 @@
     </head>
     <body onLoad="onloadBody()">
         <div>
-            <button class="toolButtonStyle" onclick="RedPenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/RedPenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="BluePenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/BluePenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="YellowPenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/YellowPenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="GreenPenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/GreenPenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="OrangePenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/OrangePenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="PurplePenSelected()">
-                <img class="toolButtonImageStyle" src="../Images/PurplePenCursor.png" />
-            </button>
-            <button class="toolButtonStyle" onclick="SpongeSelected()" width="200">
-                <img class="toolButtonImageStyle" src="../Images/Sponge.png" width="150" />
-            </button>
+            <label>
+                <input id="redRadioButton" type="radio" name="toolsGroup" checked onclick="RedPenSelected()">
+                <img src="../Images/RedPenCursor.png">
+            </label>
+            <label>
+                <input id="blueRadioButton" type="radio" name="toolsGroup" onclick="BluePenSelected()">
+                <img src="../Images/BluePenCursor.png">
+            </label>
+            <label>
+                <input id="YellowRadioButton" type="radio" name="toolsGroup" onclick="YellowPenSelected()">
+                <img src="../Images/YellowPenCursor.png">
+            </label>
+            <label>
+                <input id="greenRadioButton" type="radio" name="toolsGroup" onclick="GreenPenSelected()">
+                <img src="../Images/GreenPenCursor.png">
+            </label>
+            <label>
+                <input id="orangeRadioButton" type="radio" name="toolsGroup" onclick="OrangePenSelected()">
+                <img src="../Images/OrangePenCursor.png">
+            </label>
+            <label>
+                <input id="PurpleRadioButton" type="radio" name="toolsGroup" onclick="PurplePenSelected()">
+                <img src="../Images/PurplePenCursor.png">
+            </label>
+            <label>
+                <input id="SpongeRadioButton" type="radio" name="toolsGroup" onclick="SpongeSelected()">
+                <img src="../Images/SpongeCursor.png">
+            </label>
         </div>
         <canvas id="canvasId" position="relative" >
         </canvas>
