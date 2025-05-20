@@ -34,6 +34,7 @@
                 width: 20px;
                 background-color: coral;
                 draggable: false;
+                scale: 0.5;
             }
 
         </style>
@@ -53,13 +54,7 @@
             const purpleCursorDef = new ImageCursorDef("../Images/PurplePen.png");
             const spongeCursorDef = new ImageCursorDef("../Images/Sponge.png");
 
-            let redCursor;
-            let blueCursor;
-            let yellowCursor;
-            let greenCursor;
-            let orangeCursor;
-            let purpleCursor;
-            let spongeCursor;
+            let imageCursor;
 
             let cursorX;
             let cursorY;
@@ -82,13 +77,7 @@
                 canvas = document.getElementById('canvasId');
                 ctx = canvas.getContext("2d");
 
-                redCursor = document.getElementById('redCursor');
-                blueCursor = document.getElementById('blueCursor');
-                yellowCursor = document.getElementById('yellowCursor');
-                greenCursor = document.getElementById('greenCursor');
-                orangeCursor = document.getElementById('orangeCursor');
-                purpleCursor = document.getElementById('purpleCursor');
-                spongeCursor = document.getElementById('spongeCursor');
+                imageCursor = document.getElementById('imageCursor');
 
                 canvas.addEventListener("mousemove", mouseMoveHandler, false);
                 canvas.addEventListener("mousedown", mouseDownHandler, false);
@@ -105,85 +94,43 @@
             function RedPenSelected()
             {
                 color = "#EBA09EA0";
-                redCursor.style.visibility = "visible";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = redCursorDef.imageUrl;
             }
 
             function BluePenSelected()
             {
                 color = "#81C1DCA0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "visible";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = blueCursorDef.imageUrl;
             }
 
             function YellowPenSelected()
             {
                 color = "#DDD1A0A0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "visible"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = yellowCursorDef.imageUrl;
             }
 
             function GreenPenSelected()
             {
                 color = "#A6D3BCA0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "visible"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = greenCursorDef.imageUrl;
             }
 
             function OrangePenSelected()
             {
                 color = "#E8BB9BA0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "visible";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = orangeCursorDef.imageUrl;
             }
 
             function PurplePenSelected()
             {
                 color = "#D5B4C7A0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "visible"
-                spongeCursor.style.visibility = "hidden"
+                imageCursor.src = purpleCursorDef.imageUrl;
             }
 
             function SpongeSelected()
             {
                 color = "#3A3A3AA0";
-                redCursor.style.visibility = "hidden";
-                blueCursor.style.visibility = "hidden";
-                yellowCursor.style.visibility = "hidden"
-                greenCursor.style.visibility = "hidden"
-                orangeCursor.style.visibility = "hidden";
-                purpleCursor.style.visibility = "hidden"
-                spongeCursor.style.visibility = "visible"
+                imageCursor.src = spongeCursorDef.imageUrl;
             }
 
             function draw()
@@ -225,20 +172,8 @@
                     prevY = currY;
                     getMousePos(canvas, e)
                     draw();
-                    redCursor.style.left = cursorX + 'px';
-                    redCursor.style.top = cursorY + 'px';
-                    blueCursor.style.left = cursorX + 'px';
-                    blueCursor.style.top = cursorY + 'px';
-                    yellowCursor.style.left = cursorX + 'px';
-                    yellowCursor.style.top = cursorY + 'px';
-                    greenCursor.style.left = cursorX + 'px';
-                    greenCursor.style.top = cursorY + 'px';
-                    orangeCursor.style.left = cursorX + 'px';
-                    orangeCursor.style.top = cursorY + 'px';
-                    purpleCursor.style.left = cursorX + 'px';
-                    purpleCursor.style.top = cursorY + 'px';
-                    spongeCursor.style.left = cursorX + 30 +'px';
-                    spongeCursor.style.top = cursorY + 30 + 'px';
+                    imageCursor.style.left = cursorX + 50 + 'px';
+                    imageCursor.style.top = cursorY + 50 + 'px';
                  }
             }
 
@@ -287,13 +222,7 @@
         </div>
         <canvas id="canvasId" position="relative">
         </canvas>
-        <img id="redCursor" class="cursorImageStyle" draggable="false" style.position="absolute" style.top="100" style.left="100" src="../Images/RedPen.png" />
-        <img id="blueCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="150" src="../Images/BluePen.png" />
-        <img id="yellowCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/YellowPen.png" />
-        <img id="greenCursor" class="cursorImageStyle" draggable="false" style.position="absolute" style.top="100" style.left="100" src="../Images/GreenPen.png" />
-        <img id="orangeCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="150" src="../Images/OrangePen.png" />
-        <img id="purpleCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/PurplePen.png" />
-        <img id="spongeCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="200" src="../Images/Sponge.png" />
+        <img id="imageCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="300" src="../Images/RedPen.png" blaat="blaat"/>
         <canvas id="dsCanvasId">
         </canvas>
 
