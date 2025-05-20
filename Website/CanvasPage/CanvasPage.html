@@ -17,13 +17,14 @@
                 width: 1077px;
                 height: 333px;
             }
-            .colorButton {
+
+            .toolButtonStyle {
                 border-width: 0;
                 background-color: transparent;
             }
-            .colorButtonImage {
-                rotate: 230deg;
-                width: 20px;
+
+            .toolButtonImageStyle {
+                width: 100px;
             }
 
             .cursorImageStyle {
@@ -55,7 +56,7 @@
             const greenCursorDef = new ImageCursorDef("../Images/GreenPenCursor.png", 0, 30);
             const orangeCursorDef = new ImageCursorDef("../Images/OrangePenCursor.png", 0, 30);
             const purpleCursorDef = new ImageCursorDef("../Images/PurplePenCursor.png", 0, 30);
-            const spongeCursorDef = new ImageCursorDef("../Images/SpongeCursor.png", 10, 20);
+            const spongeCursorDef = new ImageCursorDef("../Images/SpongeCursor.png", 10, 10);
             let currentCursorDef = redCursorDef;
 
             let imageCursor;
@@ -209,26 +210,26 @@
     </head>
     <body onLoad="onloadBody()">
         <div>
-            <button class="colorButton" onclick="RedPenSelected()">
-                <img class="colorButtonImage" src="../Images/RedPen.png" />
+            <button class="toolButtonStyle" onclick="RedPenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/RedPenCursor.png" />
             </button>
-            <button class="colorButton" onclick="BluePenSelected()">
-                <img class="colorButtonImage" src="../Images/BluePen.png" />
+            <button class="toolButtonStyle" onclick="BluePenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/BluePenCursor.png" />
             </button>
-            <button class="colorButton" onclick="YellowPenSelected()">
-                <img class="colorButtonImage" src="../Images/YellowPen.png" />
+            <button class="toolButtonStyle" onclick="YellowPenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/YellowPenCursor.png" />
             </button>
-            <button class="colorButton" onclick="GreenPenSelected()">
-                <img class="colorButtonImage" src="../Images/GreenPen.png" />
+            <button class="toolButtonStyle" onclick="GreenPenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/GreenPenCursor.png" />
             </button>
-            <button class="colorButton" onclick="OrangePenSelected()">
-                <img class="colorButtonImage" src="../Images/OrangePen.png" />
+            <button class="toolButtonStyle" onclick="OrangePenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/OrangePenCursor.png" />
             </button>
-            <button class="colorButton" onclick="PurplePenSelected()">
-                <img class="colorButtonImage" src="../Images/PurplePen.png" />
+            <button class="toolButtonStyle" onclick="PurplePenSelected()">
+                <img class="toolButtonImageStyle" src="../Images/PurplePenCursor.png" />
             </button>
-            <button class="colorButton" onclick="SpongeSelected()" width="200">
-                <img class="colorButtonImage" src="../Images/Sponge.png" width="150" />
+            <button class="toolButtonStyle" onclick="SpongeSelected()" width="200">
+                <img class="toolButtonImageStyle" src="../Images/Sponge.png" width="150" />
             </button>
         </div>
         <canvas id="canvasId" position="relative">
