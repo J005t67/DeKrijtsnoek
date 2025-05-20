@@ -30,11 +30,9 @@
                 position: absolute;
                 top: 50px;
                 left: 50px;
-                rotate: 230deg;
-                width: 20px;
-                background-color: coral;
+                width: 30px;
+                background-color: transparent;
                 draggable: false;
-                scale: 0.5;
             }
 
         </style>
@@ -46,13 +44,13 @@
                 }
             }
 
-            const redCursorDef = new ImageCursorDef("../Images/RedPen.png");
-            const blueCursorDef = new ImageCursorDef("../Images/BluePen.png");
-            const yellowCursorDef = new ImageCursorDef("../Images/YellowPen.png");
-            const greenCursorDef = new ImageCursorDef("../Images/GreenPen.png");
-            const orangeCursorDef = new ImageCursorDef("../Images/OrangePen.png");
-            const purpleCursorDef = new ImageCursorDef("../Images/PurplePen.png");
-            const spongeCursorDef = new ImageCursorDef("../Images/Sponge.png");
+            const redCursorDef = new ImageCursorDef("../Images/RedPenCursor.png");
+            const blueCursorDef = new ImageCursorDef("../Images/BluePenCursor.png");
+            const yellowCursorDef = new ImageCursorDef("../Images/YellowPenCursor.png");
+            const greenCursorDef = new ImageCursorDef("../Images/GreenPenCursor.png");
+            const orangeCursorDef = new ImageCursorDef("../Images/OrangePenCursor.png");
+            const purpleCursorDef = new ImageCursorDef("../Images/PurplePenCursor.png");
+            const spongeCursorDef = new ImageCursorDef("../Images/SpongeCursor.png");
 
             let imageCursor;
 
@@ -222,7 +220,7 @@
         </div>
         <canvas id="canvasId" position="relative">
         </canvas>
-        <img id="imageCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="300" src="../Images/RedPen.png" blaat="blaat"/>
+        <img id="imageCursor" class="cursorImageStyle" draggable="false" style.position="absolute" top="100" left="300" src="../Images/RedPenCursor.png" />
         <canvas id="dsCanvasId">
         </canvas>
 
