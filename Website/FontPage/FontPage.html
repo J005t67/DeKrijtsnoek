@@ -7,40 +7,241 @@
             body {
               background-color: black;
             }
+
+            .canvasStyle {
+                background-color: #3A3A3A;
+                width: 100%;
+                height: 70%;
+            }
+
+            #textDiv {
+                position: relative;
+            }
+
+            .charImageStyle {
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                width: 30px;
+                background-color: transparent;
+                pointer-events: none;
+            }
+
         </style>
         <script>
+            "use strict"
+            class CharDef {
+                constructor(
+                    anImageUrl,
+                    aBaselineY
+                ) {
+                    this.imageUrl = anImageUrl;
+                    this.baseline = aBaselineY;
+                }
+            }
+
+            class FontDef {
+                constructor(
+                    aDirectory,
+                ) {
+                    this.directory = aDirectory;
+                    this.map = new Map();
+                }
+
+                AddChar(c, fileName, baseLine)
+                {
+                    let charDef = new CharDef(this.directory + fileName, baseLine);
+                    this.map.set(c, charDef);
+                }
+
+                GetCharDef(c)
+                {
+                    return this.map.get(c);
+                }
+            }
+
+            let solidColorFont = new FontDef("../Fonts/SolidColor/");
+
+            solidColorFont.AddChar(' ', 'space.png', 0);
+            solidColorFont.AddChar('a', 'a_lower.png', 0);
+            solidColorFont.AddChar('b', 'b_lower.png', 0);
+            solidColorFont.AddChar('c', 'c_lower.png', 0);
+            solidColorFont.AddChar('d', 'd_lower.png', 0);
+            solidColorFont.AddChar('e', 'e_lower.png', 0);
+            solidColorFont.AddChar('f', 'f_lower.png', 0);
+            solidColorFont.AddChar('g', 'g_lower.png', 0);
+            solidColorFont.AddChar('h', 'h_lower.png', 0);
+            solidColorFont.AddChar('i', 'i_lower.png', 0);
+            solidColorFont.AddChar('j', 'j_lower.png', 0);
+            solidColorFont.AddChar('k', 'k_lower.png', 0);
+            solidColorFont.AddChar('l', 'l_lower.png', 0);
+            solidColorFont.AddChar('m', 'm_lower.png', 0);
+            solidColorFont.AddChar('n', 'n_lower.png', 0);
+            solidColorFont.AddChar('o', 'o_lower.png', 0);
+            solidColorFont.AddChar('p', 'p_lower.png', 0);
+            solidColorFont.AddChar('q', 'q_lower.png', 0);
+            solidColorFont.AddChar('r', 'r_lower.png', 0);
+            solidColorFont.AddChar('s', 's_lower.png', 0);
+            solidColorFont.AddChar('t', 't_lower.png', 0);
+            solidColorFont.AddChar('u', 'u_lower.png', 0);
+            solidColorFont.AddChar('v', 'v_lower.png', 0);
+            solidColorFont.AddChar('w', 'w_lower.png', 0);
+            solidColorFont.AddChar('x', 'x_lower.png', 0);
+            solidColorFont.AddChar('y', 'y_lower.png', 0);
+            solidColorFont.AddChar('z', 'z_lower.png', 0);
+
+            solidColorFont.AddChar('A', 'a_upper.png', 0);
+            solidColorFont.AddChar('B', 'b_upper.png', 0);
+            solidColorFont.AddChar('C', 'c_upper.png', 0);
+            solidColorFont.AddChar('D', 'd_upper.png', 0);
+            solidColorFont.AddChar('E', 'e_upper.png', 0);
+            solidColorFont.AddChar('F', 'f_upper.png', 0);
+            solidColorFont.AddChar('G', 'g_upper.png', 0);
+            solidColorFont.AddChar('H', 'h_upper.png', 0);
+            solidColorFont.AddChar('I', 'i_upper.png', 0);
+            solidColorFont.AddChar('J', 'j_upper.png', 0);
+            solidColorFont.AddChar('K', 'k_upper.png', 0);
+            solidColorFont.AddChar('L', 'l_upper.png', 0);
+            solidColorFont.AddChar('M', 'm_upper.png', 0);
+            solidColorFont.AddChar('N', 'n_upper.png', 0);
+            solidColorFont.AddChar('O', 'o_upper.png', 0);
+            solidColorFont.AddChar('P', 'p_upper.png', 0);
+            solidColorFont.AddChar('Q', 'q_upper.png', 0);
+            solidColorFont.AddChar('R', 'r_upper.png', 0);
+            solidColorFont.AddChar('S', 's_upper.png', 0);
+            solidColorFont.AddChar('T', 't_upper.png', 0);
+            solidColorFont.AddChar('U', 'u_upper.png', 0);
+            solidColorFont.AddChar('V', 'v_upper.png', 0);
+            solidColorFont.AddChar('W', 'w_upper.png', 0);
+            solidColorFont.AddChar('X', 'x_upper.png', 0);
+            solidColorFont.AddChar('Y', 'y_upper.png', 0);
+            solidColorFont.AddChar('Z', 'z_upper.png', 0);
+
+            let handDrawFont = new FontDef("../Fonts/HandDraw/");
+            handDrawFont.AddChar(' ', 'space.png', 0);
+
+            handDrawFont.AddChar('a', 'a_lower.png', 0);
+            handDrawFont.AddChar('b', 'b_lower.png', 0);
+            handDrawFont.AddChar('c', 'c_lower.png', 0);
+            handDrawFont.AddChar('d', 'd_lower.png', 0);
+            handDrawFont.AddChar('e', 'e_lower.png', 0);
+            handDrawFont.AddChar('f', 'f_lower.png', 0);
+            handDrawFont.AddChar('g', 'g_lower.png', 0);
+            handDrawFont.AddChar('h', 'h_lower.png', 0);
+            handDrawFont.AddChar('i', 'i_lower.png', 0);
+            handDrawFont.AddChar('j', 'j_lower.png', 0);
+            handDrawFont.AddChar('k', 'k_lower.png', 0);
+            handDrawFont.AddChar('l', 'l_lower.png', 0);
+            handDrawFont.AddChar('m', 'm_lower.png', 0);
+            handDrawFont.AddChar('n', 'n_lower.png', 0);
+            handDrawFont.AddChar('o', 'o_lower.png', 0);
+            handDrawFont.AddChar('p', 'p_lower.png', 0);
+            handDrawFont.AddChar('q', 'q_lower.png', 0);
+            handDrawFont.AddChar('r', 'r_lower.png', 0);
+            handDrawFont.AddChar('s', 's_lower.png', 0);
+            handDrawFont.AddChar('t', 't_lower.png', 0);
+            handDrawFont.AddChar('u', 'u_lower.png', 0);
+            handDrawFont.AddChar('v', 'v_lower.png', 0);
+            handDrawFont.AddChar('w', 'w_lower.png', 0);
+            handDrawFont.AddChar('x', 'x_lower.png', 0);
+            handDrawFont.AddChar('y', 'y_lower.png', 0);
+            handDrawFont.AddChar('z', 'z_lower.png', 0);
+
+            handDrawFont.AddChar('A', 'a_upper.png', 0);
+            handDrawFont.AddChar('B', 'b_upper.png', 0);
+            handDrawFont.AddChar('C', 'c_upper.png', 0);
+            handDrawFont.AddChar('D', 'd_upper.png', 0);
+            handDrawFont.AddChar('E', 'e_upper.png', 0);
+            handDrawFont.AddChar('F', 'f_upper.png', 0);
+            handDrawFont.AddChar('G', 'g_upper.png', 0);
+            handDrawFont.AddChar('H', 'h_upper.png', 0);
+            handDrawFont.AddChar('I', 'i_upper.png', 0);
+            handDrawFont.AddChar('J', 'j_upper.png', 0);
+            handDrawFont.AddChar('K', 'k_upper.png', 0);
+            handDrawFont.AddChar('L', 'l_upper.png', 0);
+            handDrawFont.AddChar('M', 'm_upper.png', 0);
+            handDrawFont.AddChar('N', 'n_upper.png', 0);
+            handDrawFont.AddChar('O', 'o_upper.png', 0);
+            handDrawFont.AddChar('P', 'p_upper.png', 0);
+            handDrawFont.AddChar('Q', 'q_upper.png', 0);
+            handDrawFont.AddChar('R', 'r_upper.png', 0);
+            handDrawFont.AddChar('S', 's_upper.png', 0);
+            handDrawFont.AddChar('T', 't_upper.png', 0);
+            handDrawFont.AddChar('U', 'u_upper.png', 0);
+            handDrawFont.AddChar('V', 'v_upper.png', 0);
+            handDrawFont.AddChar('W', 'w_upper.png', 0);
+            handDrawFont.AddChar('X', 'x_upper.png', 0);
+            handDrawFont.AddChar('Y', 'y_upper.png', 0);
+            handDrawFont.AddChar('Z', 'z_upper.png', 0);
+
+            function OnLoadBody()
+            {
+                let textDiv = document.getElementById("textDiv");
+                DisplayText(textDiv, 'DeKrijtSnoek', solidColorFont);
+                DisplayText(textDiv, 'DeKrijtSnoek', handDrawFont);
+                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont);
+                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont);
+                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont);
+                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont);
+            }
+
+            function DisplayText(textDiv, text, fontDef)
+            {
+                let baselineY = 100;
+                let cursorX = 100;
+                for (let i = 0; i < text.length; i++) {
+//                    alert(i + ' ' + text[i]);
+                    let charDef = fontDef.GetCharDef(text[i]);
+//                    alert('charDef: ' + fontDef.GetCharDef(text[i]));
+                    if (charDef != null) {
+                        //alert(i + ' ' + text[i]);
+                        let img = document.createElement("img");
+                        img.src = charDef.imageUrl;
+
+                        textDiv.appendChild(img);
+                    }
+                    else {
+//                        alert(i + ' ' + text[i] + ' CharDef not found');
+                    }
+                }
+            }
+
         </script>
        <title>De krijtsnoek</title>
     </head>
-    <body>
-        <div style="background-color:#3A3A3A;">
-            <img id="char0" src="../Fonts/SolidColorFont/d_upper.png" height="100" width="100" />
-            <img id="char1" src="../Fonts/SolidColorFont/e_lower.png" height="70" width="70" />
-            <img id="char2" src="../Fonts/SolidColorFont/k_upper.png" height="100" width="100" />
-            <img id="char3" src="../Fonts/SolidColorFont/r_lower.png" height="70" width="60" />
-            <img id="char4" src="../Fonts/SolidColorFont/i_lower.png" height="70" width="25" />
-            <img id="char5" src="../Fonts/SolidColorFont/j_lower.png" height="70" width="30" />
-            <img id="char6" src="../Fonts/SolidColorFont/t_lower.png" height="100" width="70" />
-            <img id="char7" src="../Fonts/SolidColorFont/s_upper.png" height="100" width="100" />
-            <img id="char8" src="../Fonts/SolidColorFont/n_lower.png" height="80" width="70" />
-            <img id="char9" src="../Fonts/SolidColorFont/o_lower.png" height="80" width="70" />
-            <img id="char10" src="../Fonts/SolidColorFont/e_lower.png" height="80" width="70" />
-            <img id="char11" src="../Fonts/SolidColorFont/k_lower.png" height="100" width="70" />
+    <body onLoad="OnLoadBody()">
+        <div style="background-color:brown;">
+            <img id="char0" src="../Fonts/SolidColor/d_upper.png" height="100" width="100" />
+            <img id="char1" src="../Fonts/SolidColor/e_lower.png" height="70" width="70" />
+            <img id="char2" src="../Fonts/SolidColor/k_upper.png" height="100" width="100" />
+            <img id="char3" src="../Fonts/SolidColor/r_lower.png" height="70" width="60" />
+            <img id="char4" src="../Fonts/SolidColor/i_lower.png" height="70" width="25" />
+            <img id="char5" src="../Fonts/SolidColor/j_lower.png" height="70" width="30" />
+            <img id="char6" src="../Fonts/SolidColor/t_lower.png" height="100" width="70" />
+            <img id="char7" src="../Fonts/SolidColor/s_upper.png" height="100" width="100" />
+            <img id="char8" src="../Fonts/SolidColor/n_lower.png" height="80" width="70" />
+            <img id="char9" src="../Fonts/SolidColor/o_lower.png" height="80" width="70" />
+            <img id="char10" src="../Fonts/SolidColor/e_lower.png" height="80" width="70" />
+            <img id="char11" src="../Fonts/SolidColor/k_lower.png" height="100" width="70" />
         </div>
-        <div style="background-color:#333538;">
-            <img id="charHand0"  src="../Fonts/HandDrawFont/d_upper.png" height="100" width="100" />
-            <img id="charHand1"  src="../Fonts/HandDrawFont/e_lower.png" height="70" width="70" />
-            <img id="charHand2"  src="../Fonts/HandDrawFont/k_upper.png" height="100" width="100" />
-            <img id="charHand3"  src="../Fonts/HandDrawFont/r_lower.png" height="70" width="60" />
-            <img id="charHand4"  src="../Fonts/HandDrawFont/i_lower.png" height="70" width="25" />
-            <img id="charHand5"  src="../Fonts/HandDrawFont/j_lower.png" height="70" width="30" />
-            <img id="charHand6"  src="../Fonts/HandDrawFont/t_lower.png" height="100" width="70" />
-            <img id="charHand7"  src="../Fonts/HandDrawFont/s_upper.png" height="100" width="100" />
-            <img id="charHand8"  src="../Fonts/HandDrawFont/n_lower.png" height="80" width="70" />
-            <img id="charHand9"  src="../Fonts/HandDrawFont/o_lower.png" height="80" width="70" />
-            <img id="charHand10" src="../Fonts/HandDrawFont/e_lower.png" height="80" width="70" />
-            <img id="charHand11" src="../Fonts/HandDrawFont/k_lower.png" height="100" width="70" />
+        <div style="background-color:brown;">
+            <img id="charHand0" src="../Fonts/HandDraw/d_upper.png" height="100" width="100" />
+            <img id="charHand1" src="../Fonts/HandDraw/e_lower.png" height="70" width="70" />
+            <img id="charHand2" src="../Fonts/HandDraw/k_upper.png" height="100" width="100" />
+            <img id="charHand3" src="../Fonts/HandDraw/r_lower.png" height="70" width="60" />
+            <img id="charHand4" src="../Fonts/HandDraw/i_lower.png" height="70" width="25" />
+            <img id="charHand5" src="../Fonts/HandDraw/j_lower.png" height="70" width="30" />
+            <img id="charHand6" src="../Fonts/HandDraw/t_lower.png" height="100" width="70" />
+            <img id="charHand7" src="../Fonts/HandDraw/s_upper.png" height="100" width="100" />
+            <img id="charHand8" src="../Fonts/HandDraw/n_lower.png" height="80" width="70" />
+            <img id="charHand9" src="../Fonts/HandDraw/o_lower.png" height="80" width="70" />
+            <img id="charHand10" src="../Fonts/HandDraw/e_lower.png" height="80" width="70" />
+            <img id="charHand11" src="../Fonts/HandDraw/k_lower.png" height="100" width="70" />
         </div>
+        <div id="textDiv" style="background-color:green;" style.position="relative" height="200">
+            <!--<img id="dUpperImage" class="charImageStyle" draggable="false" style.position="absolute" src="../Fonts/SolidColor/d_upper.png" />
+            <img id="eLowerimage" class="charImageStyle" draggable="false" style.position="absolute" style="left: 150px;" src="../Fonts/SolidColor/e_lower.png" />-->
 
+        </div>
     </body>
 </html>
