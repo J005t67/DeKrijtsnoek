@@ -180,15 +180,15 @@
             function OnLoadBody()
             {
                 let textDiv = document.getElementById("textDiv");
-                DisplayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, 150);
-                DisplayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, 200);
-                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, 300);
-                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350);
-                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400);
-                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500);
+                DisplayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, 150, 1.0);
+                DisplayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, 200, 1.5);
+                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, 300, 0.6);
+                DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350, 0.7);
+                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400, 1.0);
+                DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500, 0.7);
             }
 
-            function DisplayText(textDiv, text, fontDef, x, y)
+            function DisplayText(textDiv, text, fontDef, x, y, scale)
             {
                 let baselineY = y;
                 let cursorX = x;
@@ -201,12 +201,16 @@
                         let img = document.createElement("img");
                         img.src = charDef.imageUrl;
                         img.style.position = "absolute";
-                        img.style.top = (baselineY - charDef.height + charDef.baseline) + 'px';
+                        img.style.top = baselineY + scale * (charDef.baseline -  charDef.height) + 'px';
                         img.style.left = cursorX + 'px';
-                        cursorX += charDef.width;
+                        img.width = scale * charDef.width;
+                        img.height = scale * charDef.height;
+                        cursorX += scale *charDef.width;
                         //alert('i: ' + i +
                         //    '\nc: ' + text[i] +
                         //    '\nh: ' + charDef.height +
+                        //    '\nw: ' + charDef.width +
+                        //    '\nscale: ' + scale +
                         //    '\nx: ' + cursorX);
 
                         textDiv.appendChild(img);
@@ -221,35 +225,7 @@
        <title>De krijtsnoek</title>
     </head>
     <body onLoad="OnLoadBody()">
-        <div style="background-color:brown;">
-            <img id="char0" src="../Fonts/SolidColor/d_upper.png" height="100" width="100" />
-            <img id="char1" src="../Fonts/SolidColor/e_lower.png" height="70" width="70" />
-            <img id="char2" src="../Fonts/SolidColor/k_upper.png" height="100" width="100" />
-            <img id="char3" src="../Fonts/SolidColor/r_lower.png" height="70" width="60" />
-            <img id="char4" src="../Fonts/SolidColor/i_lower.png" height="70" width="25" />
-            <img id="char5" src="../Fonts/SolidColor/j_lower.png" height="70" width="30" />
-            <img id="char6" src="../Fonts/SolidColor/t_lower.png" height="100" width="70" />
-            <img id="char7" src="../Fonts/SolidColor/s_upper.png" height="100" width="100" />
-            <img id="char8" src="../Fonts/SolidColor/n_lower.png" height="80" width="70" />
-            <img id="char9" src="../Fonts/SolidColor/o_lower.png" height="80" width="70" />
-            <img id="char10" src="../Fonts/SolidColor/e_lower.png" height="80" width="70" />
-            <img id="char11" src="../Fonts/SolidColor/k_lower.png" height="100" width="70" />
-        </div>
-        <div style="background-color:brown;">
-            <img id="charHand0" src="../Fonts/HandDraw/d_upper.png" height="100" width="100" />
-            <img id="charHand1" src="../Fonts/HandDraw/e_lower.png" height="70" width="70" />
-            <img id="charHand2" src="../Fonts/HandDraw/k_upper.png" height="100" width="100" />
-            <img id="charHand3" src="../Fonts/HandDraw/r_lower.png" height="70" width="60" />
-            <img id="charHand4" src="../Fonts/HandDraw/i_lower.png" height="70" width="25" />
-            <img id="charHand5" src="../Fonts/HandDraw/j_lower.png" height="70" width="30" />
-            <img id="charHand6" src="../Fonts/HandDraw/t_lower.png" height="100" width="70" />
-            <img id="charHand7" src="../Fonts/HandDraw/s_upper.png" height="100" width="100" />
-            <img id="charHand8" src="../Fonts/HandDraw/n_lower.png" height="80" width="70" />
-            <img id="charHand9" src="../Fonts/HandDraw/o_lower.png" height="80" width="70" />
-            <img id="charHand10" src="../Fonts/HandDraw/e_lower.png" height="80" width="70" />
-            <img id="charHand11" src="../Fonts/HandDraw/k_lower.png" height="100" width="70" />
-        </div>
-        <div id="textDiv" style="background-color:green;" style.position="relative" height="200">
+               <div id="textDiv" style="background-color:green;" style.position="relative" height="200">
             <!--<img id="dUpperImage" class="charImageStyle" draggable="false" style.position="absolute" src="../Fonts/SolidColor/d_upper.png" />
             <img id="eLowerimage" class="charImageStyle" draggable="false" style.position="absolute" style="left: 150px;" src="../Fonts/SolidColor/e_lower.png" />-->
 
