@@ -23,7 +23,6 @@
                 height: 500px;
             }
 
-
             #textDiv2 {
                 background-color:green;
                 top: 500px;
@@ -41,7 +40,7 @@
         </style>
         <script>
             "use strict"
-            class CharDef {
+            class ImageCharDef {
                 constructor(
                     anImageUrl,
                     aWidth,
@@ -55,7 +54,7 @@
                 }
             }
 
-            class FontDef {
+            class ImageFontDef {
                 constructor(
                     aDirectory,
                 ) {
@@ -65,7 +64,7 @@
 
                 AddChar(c, fileName, width, height, baseLine)
                 {
-                    let charDef = new CharDef(this.directory + fileName, width, height, baseLine);
+                    let charDef = new ImageCharDef(this.directory + fileName, width, height, baseLine);
                     this.map.set(c, charDef);
                 }
 
@@ -75,7 +74,7 @@
                 }
             }
 
-            let solidColorFont = new FontDef("../Fonts/SolidColor/");
+            let solidColorFont = new ImageFontDef("../Fonts/SolidColor/");
 
             solidColorFont.AddChar(' ', 'space.png'  , 62, 27, 0);
             solidColorFont.AddChar('a', 'a_lower.png', 56, 50, 0);
@@ -132,7 +131,7 @@
             solidColorFont.AddChar('Y', 'y_upper.png', 76, 73, 0);
             solidColorFont.AddChar('Z', 'z_upper.png', 68, 72, 0);
 
-            let handDrawFont = new FontDef("../Fonts/HandDraw/");
+            let handDrawFont = new ImageFontDef("../Fonts/HandDraw/");
             handDrawFont.AddChar(' ', 'space.png',   20, 7, 0);
             handDrawFont.AddChar('a', 'a_lower.png', 20, 39, 0);
             handDrawFont.AddChar('b', 'b_lower.png', 17, 46, 0);
