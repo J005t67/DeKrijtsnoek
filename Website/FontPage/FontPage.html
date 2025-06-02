@@ -6,6 +6,7 @@
         <style>
             body {
               background-color: black;
+              margin:100px 100px 100px 100px;
             }
 
             .canvasStyle {
@@ -14,8 +15,18 @@
                 height: 70%;
             }
 
-            #textDiv {
+            .textDivStyle {
+                background-color:aqua;
                 position: relative;
+                top: 0px;
+                width: 800px;
+                height: 500px;
+            }
+
+
+            #textDiv2 {
+                background-color:green;
+                top: 500px;
             }
 
             .charImageStyle {
@@ -23,7 +34,7 @@
                 top: 50px;
                 left: 50px;
                 width: 30px;
-                background-color: transparent;
+                background-color: green;
                 pointer-events: none;
             }
 
@@ -186,6 +197,7 @@
                 DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350, 0.7);
                 DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400, 1.0);
                 DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500, 0.7);
+                DisplayText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
             }
 
             function DisplayText(textDiv, text, fontDef, x, y, scale)
@@ -225,10 +237,11 @@
        <title>De krijtsnoek</title>
     </head>
     <body onLoad="OnLoadBody()">
-               <div id="textDiv" style="background-color:green;" style.position="relative" height="200">
-            <!--<img id="dUpperImage" class="charImageStyle" draggable="false" style.position="absolute" src="../Fonts/SolidColor/d_upper.png" />
-            <img id="eLowerimage" class="charImageStyle" draggable="false" style.position="absolute" style="left: 150px;" src="../Fonts/SolidColor/e_lower.png" />-->
+        <div id="textDiv" class="textDivStyle" style.height="200"/>
+        <div id="textDiv2" class="textDivStyle" style.height="200"/>
 
-        </div>
-    </body>
+                <!--<img id="dUpperImage" class="charImageStyle" draggable="false" style.position="absolute" src="../Fonts/SolidColor/d_upper.png" />
+        <img id="eLowerimage" class="charImageStyle" draggable="false" style.position="absolute" style="left: 150px;" src="../Fonts/SolidColor/e_lower.png" />-->
+
+</body>
 </html>
