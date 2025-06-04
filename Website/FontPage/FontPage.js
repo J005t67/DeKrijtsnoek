@@ -7,15 +7,15 @@ let handDrawFont = new HandDrawFont();
 let solidColorFont = new SolidColorFont();
 
 let textDiv = document.getElementById("textDiv");
-DisplayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, 150, 1.0);
-DisplayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, 200, 1.5);
-DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, 300, 0.6);
-DisplayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350, 0.7);
-DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400, 1.0);
-DisplayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500, 0.7);
-DisplayText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
+displayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, 150, 1.0);
+displayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, 200, 1.5);
+displayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, 300, 0.6);
+displayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350, 0.7);
+displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400, 1.0);
+displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500, 0.7);
+displayText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
 
-function DisplayText(textDiv, text, fontDef, x, y, scale)
+function displayText(textDiv, text, fontDef, x, y, scale)
 {
     let baselineY = y;
     let cursorX = x;

@@ -90,7 +90,6 @@
             var currX;
             var currY;
 
-
             function onloadBody() {
                 canvas = document.getElementById('canvasId');
                 ctx = canvas.getContext("2d");
@@ -103,49 +102,49 @@
                 canvas.addEventListener("mouseout", mouseOutHandler, false);
             }
 
-            function RedPenSelected()
+            function redPenSelected()
             {
                 color = "#EBA09EA0";
                 currentCursorDef = redCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function BluePenSelected()
+            function bluePenSelected()
             {
                 color = "#81C1DCA0";
                 currentCursorDef = blueCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function YellowPenSelected()
+            function yellowPenSelected()
             {
                 color = "#DDD1A0A0";
                 currentCursorDef = yellowCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function GreenPenSelected()
+            function greenPenSelected()
             {
                 color = "#A6D3BCA0";
                 currentCursorDef = greenCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function OrangePenSelected()
+            function orangePenSelected()
             {
                 color = "#E8BB9BA0";
                 currentCursorDef = orangeCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function PurplePenSelected()
+            function purplePenSelected()
             {
                 color = "#D5B4C7A0";
                 currentCursorDef = purpleCursorDef;
                 imageCursor.src = currentCursorDef.imageUrl;
             }
 
-            function SpongeSelected()
+            function spongeSelected()
             {
                 color = "#3A3A3AA0";
                 currentCursorDef = spongeCursorDef;
@@ -218,31 +217,31 @@
     <body onLoad="onloadBody()">
         <div>
             <label>
-                <input id="redRadioButton" type="radio" name="toolsGroup" checked onclick="RedPenSelected()">
+                <input id="redRadioButton" type="radio" name="toolsGroup" checked onclick="redPenSelected()">
                 <img src="../Images/RedPenCursor.png">
             </label>
             <label>
-                <input id="blueRadioButton" type="radio" name="toolsGroup" onclick="BluePenSelected()">
+                <input id="blueRadioButton" type="radio" name="toolsGroup" onclick="bluePenSelected()">
                 <img src="../Images/BluePenCursor.png">
             </label>
             <label>
-                <input id="YellowRadioButton" type="radio" name="toolsGroup" onclick="YellowPenSelected()">
+                <input id="YellowRadioButton" type="radio" name="toolsGroup" onclick="yellowPenSelected()">
                 <img src="../Images/YellowPenCursor.png">
             </label>
             <label>
-                <input id="greenRadioButton" type="radio" name="toolsGroup" onclick="GreenPenSelected()">
+                <input id="greenRadioButton" type="radio" name="toolsGroup" onclick="greenPenSelected()">
                 <img src="../Images/GreenPenCursor.png">
             </label>
             <label>
-                <input id="orangeRadioButton" type="radio" name="toolsGroup" onclick="OrangePenSelected()">
+                <input id="orangeRadioButton" type="radio" name="toolsGroup" onclick="orangePenSelected()">
                 <img src="../Images/OrangePenCursor.png">
             </label>
             <label>
-                <input id="PurpleRadioButton" type="radio" name="toolsGroup" onclick="PurplePenSelected()">
+                <input id="PurpleRadioButton" type="radio" name="toolsGroup" onclick="purplePenSelected()">
                 <img src="../Images/PurplePenCursor.png">
             </label>
             <label>
-                <input id="SpongeRadioButton" type="radio" name="toolsGroup" onclick="SpongeSelected()">
+                <input id="SpongeRadioButton" type="radio" name="toolsGroup" onclick="spongeSelected()">
                 <img src="../Images/SpongeCursor.png">
             </label>
         </div>
