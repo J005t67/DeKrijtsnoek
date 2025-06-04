@@ -6,13 +6,35 @@ import { SolidColorFont } from "../modules/SolidColorFont.js";
 let handDrawFont = new HandDrawFont();
 let solidColorFont = new SolidColorFont();
 
+alert(handDrawFont.getFontHeight() + " " + solidColorFont.getFontHeight());
+
 let textDiv = document.getElementById("textDiv");
-displayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, 150, 1.0);
-displayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, 200, 1.5);
-displayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, 300, 0.6);
-displayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, 350, 0.7);
-displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, 400, 1.0);
-displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, 500, 0.7);
+let baseline = 150;
+
+let scale = 1.0
+baseline += scale * solidColorFont.getFontHeight();
+displayText(textDiv, 'De KrijtSnoek', solidColorFont, 50, baseline, scale);
+
+scale = 1.5
+baseline += scale * handDrawFont.getFontHeight();
+displayText(textDiv, 'De KrijtSnoek', handDrawFont, 50, baseline, scale);
+
+scale = 0.6;
+baseline += scale * solidColorFont.getFontHeight();
+displayText(textDiv, 'the quick brown fox jumps over the lazy dog', solidColorFont, 50, baseline, scale);
+
+scale = 0.7;
+baseline += scale * handDrawFont.getFontHeight();
+displayText(textDiv, 'the quick brown fox jumps over the lazy dog', handDrawFont, 50, baseline, scale);
+
+scale = 1.0;
+baseline += scale * handDrawFont.getFontHeight();
+displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', handDrawFont, 50, baseline, scale);
+
+scale = 0.7;
+baseline += scale * solidColorFont.getFontHeight();
+displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, baseline, scale);
+
 displayText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
 
 function displayText(textDiv, text, fontDef, x, y, scale)
