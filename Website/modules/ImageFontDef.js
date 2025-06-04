@@ -21,12 +21,14 @@ export class ImageFontDef {
         this.map = new Map();
     }
 
-    AddChar(c, fileName, width, height, baseLine) {
+    addCharDef(c, fileName, width, height, baseLine) {
         let charDef = new ImageCharDef(this.directory + fileName, width, height, baseLine);
         this.map.set(c, charDef);
     }
 
-    GetCharDef(c) {
+    getCharDef(c) {
         return this.map.get(c);
     }
+
+    
 }

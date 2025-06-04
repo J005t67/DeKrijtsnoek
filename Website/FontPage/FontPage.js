@@ -21,7 +21,7 @@ function DisplayText(textDiv, text, fontDef, x, y, scale)
     let cursorX = x;
     for (let i = 0; i < text.length; i++) {
 //                    alert(i + ' ' + text[i]);
-        let charDef = fontDef.GetCharDef(text[i]);
+        let charDef = fontDef.getCharDef(text[i]);
 //                    alert('charDef: ' + fontDef.GetCharDef(text[i]));
         if (charDef != null) {
             //alert(i + ' ' + text[i]);
