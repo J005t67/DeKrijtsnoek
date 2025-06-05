@@ -6,10 +6,10 @@ import { SolidColorFont } from "../modules/SolidColorFont.js";
 let handDrawFont = new HandDrawFont();
 let solidColorFont = new SolidColorFont();
 
-alert(handDrawFont.getFontHeight() + " " + solidColorFont.getFontHeight());
-
 let textDiv = document.getElementById("textDiv");
-let baseline = 150;
+let textDiv2 = document.getElementById("textDiv2");
+
+let baseline = 0;
 
 let scale = 1.0
 baseline += scale * solidColorFont.getFontHeight();
@@ -35,7 +35,46 @@ scale = 0.7;
 baseline += scale * solidColorFont.getFontHeight();
 displayText(textDiv, 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG', solidColorFont, 50, baseline, scale);
 
-displayText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
+displayMultiLineText(textDiv2, 'Een klein verhaaltje om te testen of automatisch wordwrap en newline ook werkt. Zou leuk zijn.', solidColorFont, 50, 50, 0.7);
+
+function displayMultiLineText(textDiv, text, fontDef, x, y, scale) {
+    let clientRect = textDiv.getBoundingClientRect();
+    let maxLineWidth = clientRect.width;
+    let startIndex = 0;
+    let lineWidth = 0;
+    let index = 0;
+    // Do no start new line on leading space
+    while (index < text.length && text[index] == ' ') {
+        lineWidth += fontDef.getCharDef(' ').width;
+        index++;
+    }
+    let endIndex = index;
+    let wordWidth = 0;
+    for (; index < text.length; index++) {
+        let ch = text[index];
+        let charDef = fontDef.getCharDef(ch);
+        if (charDef === undefined) continue;
+        if (ch != ' ') {
+            wordWidth += charDef.width;
+        }
+        else {
+            // if complete word fits on current line
+            if (scale * (lineWidth + wordWidth) < maxLineWidth) {
+                lineWidth += wordWidth;
+                wordWidth = charDef.width;
+                endIndex = index;
+            }
+            else {
+                let textLine = text.substring(0, endIndex);
+                displayText(textDiv, textLine, fontDef, x, y, scale);
+                let remainingText = text.substring(endIndex + 1);
+                displayMultiLineText(textDiv, remainingText, fontDef, x, y + scale * fontDef.getFontHeight(), scale);
+                return;
+            }
+        }
+    }
+    displayText(textDiv, text, fontDef, x, y, scale);
+}
 
 function displayText(textDiv, text, fontDef, x, y, scale)
 {
@@ -63,9 +102,6 @@ function displayText(textDiv, text, fontDef, x, y, scale)
             //    '\nx: ' + cursorX);
 
             textDiv.appendChild(img);
-        }
-        else {
-//                        alert(i + ' ' + text[i] + ' CharDef not found');
         }
     }
 }
