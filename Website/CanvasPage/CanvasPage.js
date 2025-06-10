@@ -137,15 +137,13 @@ function mouseMoveHandler(e)
 {
     prevX = currX;
     prevY = currY;
+    getMousePos(canvas, e)
     if (mustDraw)
     {
-        prevX = currX;
-        prevY = currY;
-        getMousePos(canvas, e)
         draw();
-        imageCursor.style.left = cursorX - currentCursorDef.hotSpotX + 'px';
-        imageCursor.style.top = cursorY - currentCursorDef.hotSpotY + 'px';
-        }
+    }
+    imageCursor.style.left = cursorX - currentCursorDef.hotSpotX + 'px';
+    imageCursor.style.top = cursorY - currentCursorDef.hotSpotY + 'px';
 }
 
 function mouseOutHandler()
@@ -157,11 +155,17 @@ function mouseDownHandler(e)
 {
     getMousePos(canvas, e)
     mustDraw = true;
+    showImageCursor();
 }
 
 function mouseUpHandler()
 {
     mustDraw = false;
+}
+
+function showImageCursor()
+{
+    canvas.style.cursor = 'none';
 }
 
 
